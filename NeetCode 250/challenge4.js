@@ -7,19 +7,24 @@
 //  6: 3
 //}
 
-function twoSum(nums, target) {
-  let hmap = {}
-  for (k in nums) {
-    console.log(nums[k])
+class Solution {
+  /**
+   * @param {number[]} nums
+   * @param {number} target
+   * @return {number[]}
+   */
+  twoSum(nums, target) {
+    let hmap = {}
+    for (let k in nums) {
+      console.log(nums[k])
 
-    if (hmap[target - nums[k]]) return [hmap[target - nums[k]], k]
+      if (hmap[target - nums[k]])
+        return [Number(hmap[target - nums[k]]), Number(k)]
+
+      hmap[nums[k]] = k
+    }
+
+    console.log(hmap)
+    return [0, 0]
   }
-
-  hmap[nums[k]] = k
-
-  console.log(hmap)
-  return [0, 0]
 }
-
-console.log(twoSum([3, 4, 5, 6], 7))
-console.log(twoSum([4, 5, 6], 10))
