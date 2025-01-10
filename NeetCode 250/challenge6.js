@@ -1,9 +1,17 @@
-class Solution {
-  /**
-   * @param {number[]} prices
-   * @return {number}
-   */
-  maxProfit(prices) {}
+function maxProfit(prices) {
+  let max = 0
+  let rptr = 1
+  let lptr = 0
+
+  while (rptr < prices.length) {
+    console.log(
+      `Left: Prices[${lptr}]: ${prices[lptr]}, Right: Prices[${rptr}]: ${prices[rptr]}`
+    )
+    if (prices[rptr] - prices[lptr] < 0) {
+      lptr = rptr
+      rptr += 1
+    }
+  }
 }
 
-//watch video on sliding window technique with two pointers
+maxProfit([10, 1, 5, 6, 7, 1])
