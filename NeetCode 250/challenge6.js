@@ -4,14 +4,20 @@ function maxProfit(prices) {
   let lptr = 0
 
   while (rptr < prices.length) {
-    console.log(
-      `Left: Prices[${lptr}]: ${prices[lptr]}, Right: Prices[${rptr}]: ${prices[rptr]}`
-    )
-    if (prices[rptr] - prices[lptr] < 0) {
+    /*
+        console.log(
+        `Left: Prices[${lptr}] ${prices[lptr]}, Right: Prices[${rptr}] ${prices[rptr]}, Max: ${max} `
+        )
+        */
+
+    if (prices[rptr] - prices[lptr] > max) max = prices[rptr] - prices[lptr]
+
+    if (prices[rptr] < prices[lptr]) {
       lptr = rptr
+      rptr += 1
+    } else {
       rptr += 1
     }
   }
+  return max
 }
-
-maxProfit([10, 1, 5, 6, 7, 1])
