@@ -8,21 +8,15 @@ function isValid(s) {
   }
 
   for (let k in sarray) {
-    if (sarray[sarray.length - 1] === hmap[sarray[k]]) {
-      stack.pop()
-      console.log(sarray[sarray.length - 1])
-      console.log('if')
-      console.log(stack)
-    } else if (hmap[sarray[k]]) {
-      console.log('else if')
-      console.log(stack)
-    } else {
-      console.log('else')
-      stack.push(sarray[k])
-      console.log(stack)
+    if (hmap[sarray[k]] === undefined) stack.push(sarray[k])
+
+    if (stack.length !== 0) {
+      if (hmap[sarray[k]] && hmap[sarray[k]] === stack[stack.length - 1])
+        stack.pop()
+      else return false
     }
   }
-  if (stack.length === 0) return true
+  console.log(stack)
 }
 
 console.log(isValid('([{}])'))
