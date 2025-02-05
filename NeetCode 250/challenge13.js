@@ -7,8 +7,8 @@ function search(nums, target) {
 
     console.log(`nums[${l}] = ${nums[l]}, nums[${r}] = ${nums[r]}`)
 
-    if (target < nums[m]) r = m
-    else if (target > nums[m]) l = m
+    if (target < nums[m]) r = m - 1
+    else if (target > nums[m]) l = m + 1
     else return m
 
     console.log(`nums[${l}] = ${nums[l]}, nums[${r}] = ${nums[r]}`)
