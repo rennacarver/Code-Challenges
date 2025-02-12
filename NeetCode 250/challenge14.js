@@ -14,12 +14,19 @@ class Solution {
    * @return {ListNode}
    */
   reverseList(head) {
+    if (!head) return null
+
     let curr = head
+    let next = curr.next
     let prev = null
 
     while (curr) {
-      console.log(curr.val)
-      curr = curr.next
+      next = curr.next
+      curr.next = prev
+      prev = curr
+      curr = next
     }
+
+    return prev
   }
 }
