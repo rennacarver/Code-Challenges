@@ -15,6 +15,16 @@ class Solution {
    * @return {TreeNode}
    */
   invertTree(root) {
-    if (root === null) return null
+    //base case
+    if (!root) return null
+    console.log(root.val)
+
+    //create new tree from right and left branches
+    let r = new TreeNode(root.right)
+    let l = new TreeNode(root.left)
+
+    //recursively call invertTree on both branches
+    this.invertTree(root.right)
+    this.invertTree(root.left)
   }
 }
