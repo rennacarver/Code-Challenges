@@ -20,8 +20,7 @@ class Solution {
     //console.log(root.val)
 
     //create new tree from right and left branches
-    let r = new TreeNode(root.right)
-    let l = new TreeNode(root.left)
+    let node = new TreeNode(root.val)
 
     //recursively call invertTree on both branches
     this.invertTree(root.right)
