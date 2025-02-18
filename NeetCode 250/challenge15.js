@@ -17,7 +17,7 @@ class Solution {
   invertTree(root) {
     //base case
     if (!root) return null
-    console.log(root.val)
+    //console.log(root.val)
 
     //create new tree from right and left branches
     let r = new TreeNode(root.right)
