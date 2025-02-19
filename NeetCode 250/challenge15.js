@@ -23,7 +23,9 @@ class Solution {
     let node = new TreeNode(root.val)
 
     //recursively call invertTree on both branches
-    this.invertTree(root.right)
-    this.invertTree(root.left)
+    node.left = this.invertTree(root.right)
+    node.right = this.invertTree(root.left)
+
+    return node
   }
 }
