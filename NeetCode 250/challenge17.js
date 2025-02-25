@@ -15,16 +15,19 @@ class Solution {
    * @return {number}
    */
   diameterOfBinaryTree(root) {
+    let max = 0
+    this.dfs(root, max)
+  }
+
+  dfs(root, max) {
     if (!root) return 0
 
-    let l = diameterOfBinaryTree(root.left)
-    let r = diameterOfBinaryTree(root.right)
+    let l = this.diameterOfBinaryTree(root.left)
+    let r = this.diameterOfBinaryTree(root.right)
 
-    if (l + r > max) max = l + r
+    console.log(`diameter: ${l + r}`)
 
     if (r > l) return r + 1
     else return l + 1
   }
-
-  dfs(root, max) {}
 }
