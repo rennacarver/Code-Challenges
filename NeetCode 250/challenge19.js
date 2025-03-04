@@ -14,3 +14,15 @@ class TreeNode {
 
   search(val) {}
 }
+
+function arrayToTree(array) {
+  console.log(array)
+}
+
+let node = new TreeNode(2)
+
+console.log(node)
+
+arrayToTree([1, 2, 3, 4])
+
+//https://www.youtube.com/watch?v=0K0uCMYq5ng
