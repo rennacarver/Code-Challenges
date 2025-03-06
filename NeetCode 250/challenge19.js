@@ -16,13 +16,13 @@ class TreeNode {
 }
 
 function arrayToTree(array) {
+  let m = Math.floor(array.length / 2)
+  let node = new TreeNode(array[m])
+  array.splice(m, 1)
   console.log(array)
+  return node
 }
 
-let node = new TreeNode(2)
-
-console.log(node)
-
-arrayToTree([1, 2, 3, 4])
+console.log(arrayToTree([1, 2, 3, 4, 5]))
 
 //https://www.youtube.com/watch?v=0K0uCMYq5ng
