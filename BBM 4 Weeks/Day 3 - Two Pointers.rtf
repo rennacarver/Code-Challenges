@@ -1,0 +1,37 @@
+{\rtf1\ansi\ansicpg1252\cocoartf2822
+\cocoatextscaling0\cocoaplatform0{\fonttbl\f0\fmodern\fcharset0 Courier;}
+{\colortbl;\red255\green255\blue255;\red0\green0\blue255;\red255\green255\blue255;}
+{\*\expandedcolortbl;;\cssrgb\c0\c0\c100000;\cssrgb\c100000\c100000\c100000;}
+\margl1440\margr1440\vieww16300\viewh14460\viewkind0
+\deftab720
+\pard\pardeftab720\partightenfactor0
+
+\f0\fs36 \cf2 \cb3 \expnd0\expndtw0\kerning0
+nums = [1, 9, 0, 2, 0]\
+\
+let zero = 0\
+let non = 0\
+\
+while (non < nums.length && zero < nums.length) \{\
+	if(nums[zero] !== 0)\{\
+		zero++\
+\}\
+\
+if(nums[non] === 0) \{\
+	non++\
+\}\
+\
+if (zero > non) \{\
+	non = zero\
+\}\
+\
+if (zero < non) \{\
+	let temp = nums[non]\
+	nums[non] = nums[zero]\
+	nums[zero] = temp\
+\}\
+    console.log(nums)\
+    console.log (`zero:$\{zero\}`)\
+    console.log (`non:$\{non\}`)\
+\}\
+}
