@@ -1,0 +1,180 @@
+{\rtf1\ansi\ansicpg1252\cocoartf2868
+\cocoatextscaling0\cocoaplatform0{\fonttbl\f0\fnil\fcharset0 Monaco;}
+{\colortbl;\red255\green255\blue255;\red15\green112\blue1;\red255\green255\blue254;\red0\green0\blue0;
+\red0\green0\blue255;\red14\green110\blue109;\red144\green1\blue18;\red19\green118\blue70;}
+{\*\expandedcolortbl;;\cssrgb\c0\c50196\c0;\cssrgb\c100000\c100000\c99608;\cssrgb\c0\c0\c0;
+\cssrgb\c0\c0\c100000;\cssrgb\c0\c50196\c50196;\cssrgb\c63922\c8235\c8235;\cssrgb\c3529\c52549\c34510;}
+\margl1440\margr1440\vieww16000\viewh17100\viewkind0
+\deftab720
+\pard\pardeftab720\partightenfactor0
+
+\f0\fs28 \cf2 \cb3 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 /*\cf0 \cb1 \strokec4 \
+\cf2 \cb3 \strokec2 Authorization: Create, Update, and Read Employee Record\cf0 \cb1 \strokec4 \
+\
+\
+\cf2 \cb3 \strokec2 By Sebastian H\cf0 \cb1 \strokec4 \
+\cf2 \cb3 \strokec2 Nov 14, 2025\cf0 \cb1 \strokec4 \
+\cf2 \cb3 \strokec2 A lot of what we're working on at Sparrow involves ensuring proper permissions and access to different data sets depending on whether you are an employee, an organization, or a product specialist.\cf0 \cb1 \strokec4 \
+\
+\cf2 \cb3 \strokec2 The goal here is to build a basic prototype of an employee (think of this as a row in a database). You can choose your implementation \'97 an encapsulated dict , etc. You should be able to instantiate an employee, and then operate on that employee as different roles with corresponding permissions.\cf0 \cb1 \strokec4 \
+\
+\cf2 \cb3 \strokec2 We recommend you use either Python or Javascript to complete this task because we use them at Sparrow.\cf0 \cb1 \strokec4 \
+\
+\cf2 \cb3 \strokec2 You can reference any documentation without limitation, and ask any questions for clarification.\cf0 \cb1 \strokec4 \
+\
+\cf2 \cb3 \strokec2 We request that you share your screen.\cf0 \cb1 \strokec4 \
+\
+\cf2 \cb3 \strokec2 You can use any dev environment, code editor, or web sandbox. If you don't have a preference, we suggest Replit \'96 Build apps and sites with AI \cf0 \cb1 \strokec4 \
+\
+\cf2 \cb3 \strokec2 We have allocated one hour for this task, including time for questions and testing. The last five minutes will be reserved for testing, discussing proposed next steps, and otherwise wrapping up. We will remind you of time at: 30 min remaining, 15 min remaining.\cf0 \cb1 \strokec4 \
+\
+\cf2 \cb3 \strokec2 Please send us your code at the conclusion of the interview.\cf0 \cb1 \strokec4 \
+\
+\cf2 \cb3 \strokec2 We will be judging the quality of your API and implementation.\cf0 \cb1 \strokec4 \
+\
+\cf2 \cb3 \strokec2 Model\cf0 \cb1 \strokec4 \
+\cf2 \cb3 \strokec2 The employee should store the fields below. Please don't worry about validating types until you have finished permissions first!\cf0 \cb1 \strokec4 \
+\
+\cf2 \cb3 \strokec2 name <String>\cf0 \cb1 \strokec4 \
+\
+\cf2 \cb3 \strokec2 date_of_birth <Date>\cf0 \cb1 \strokec4 \
+\
+\cf2 \cb3 \strokec2 work_email <String>\cf0 \cb1 \strokec4 \
+\
+\cf2 \cb3 \strokec2 is_exempt <Bool>\cf0 \cb1 \strokec4 \
+\
+\cf2 \cb3 \strokec2 specialist_notes <String>\cf0 \cb1 \strokec4 \
+\
+\cf2 \cb3 \strokec2 You should be able to pass in data when instantiating a new employee.\cf0 \cb1 \strokec4 \
+\
+\cf2 \cb3 \strokec2 e.g. const new_employee = new Employee(...data)\cf0 \cb1 \strokec4 \
+\
+\cf2 \cb3 \strokec2 The employee instance should be able to be queried by a user with any of three roles and return only what\'92s accessible to them: employee, organization, and product specialist.\cf0 \cb1 \strokec4 \
+\
+\cf2 \cb3 \strokec2 Don't worry about authenticating, or detecting, the role of the person making the query: assume that we know the role of the person querying, and that we can then use the correct accessor function to access the data.\cf0 \cb1 \strokec4 \
+\
+\cf2 \cb3 \strokec2 (E.g. new_employee.read(role, ...), new_employee.write(role, ...)).\cf0 \cb1 \strokec4 \
+\
+\cf2 \cb3 \strokec2 Permissions\cf0 \cb1 \strokec4 \
+\cf2 \cb3 \strokec2 The following are the query permissions by role.\cf0 \cb1 \strokec4 \
+\
+\cf2 \cb3 \strokec2 Employee\cf0 \cb1 \strokec4 \
+\
+\cf2 \cb3 \strokec2 Write:\cf0 \cb1 \strokec4 \
+\
+\cf2 \cb3 \strokec2 All except ["specialist_notes", "is_exempt"]\cf0 \cb1 \strokec4 \
+\
+\cf2 \cb3 \strokec2 Read:\cf0 \cb1 \strokec4 \
+\
+\cf2 \cb3 \strokec2 All except ["specialist_notes", "is_exempt"]\cf0 \cb1 \strokec4 \
+\
+\cf2 \cb3 \strokec2 Organization Admin\cf0 \cb1 \strokec4 \
+\
+\cf2 \cb3 \strokec2 Write:\cf0 \cb1 \strokec4 \
+\
+\cf2 \cb3 \strokec2 Only ["work_email", "is_exempt"]\cf0 \cb1 \strokec4 \
+\
+\cf2 \cb3 \strokec2 Read:\cf0 \cb1 \strokec4 \
+\
+\cf2 \cb3 \strokec2 All except ["specialist_notes", "date_of_birth"]\cf0 \cb1 \strokec4 \
+\
+\cf2 \cb3 \strokec2 Product Specialist\cf0 \cb1 \strokec4 \
+\
+\cf2 \cb3 \strokec2 Write:\cf0 \cb1 \strokec4 \
+\
+\cf2 \cb3 \strokec2 All fields\cf0 \cb1 \strokec4 \
+\
+\cf2 \cb3 \strokec2 Read:\cf0 \cb1 \strokec4 \
+\
+\cf2 \cb3 \strokec2 All fields.\cf0 \cb1 \strokec4 \
+\
+\cf2 \cb3 \strokec2 Follow up:\cf0 \cb1 \strokec4 \
+\
+\cf2 \cb3 \strokec2 How would you handle permissions being changed or updated?\cf0 \cb1 \strokec4 \
+\cf2 \cb3 \strokec2 */\cf0 \cb1 \strokec4 \
+\
+\cf5 \cb3 \strokec5 class\cf0 \strokec4  \cf6 \strokec6 Employee\cf0 \strokec4  \{\cb1 \
+\cb3   \cf5 \strokec5 constructor\cf0 \strokec4 (employee_name, date_of_birth, work_email, is_exempt, specialist_notes) \{\cb1 \
+\cb3     \cf5 \strokec5 this\cf0 \strokec4 .employee_name = employee_name\cb1 \
+\cb3     \cf5 \strokec5 this\cf0 \strokec4 .date_of_birth = date_of_birth\cb1 \
+\cb3     \cf5 \strokec5 this\cf0 \strokec4 .work_email = work_email\cb1 \
+\cb3     \cf5 \strokec5 this\cf0 \strokec4 .is_exempt = is_exempt\cb1 \
+\cb3     \cf5 \strokec5 this\cf0 \strokec4 .specialist_notes = specialist_notes\cb1 \
+\cb3   \}\cb1 \
+\cb3   \cb1 \
+\cb3   write(role, queries) \{\cb1 \
+\cb3     \cf5 \strokec5 if\cf0 \strokec4  (role === \cf7 \strokec7 'employee'\cf0 \strokec4 ) \{\cb1 \
+\cb3       \cf5 \strokec5 for\cf0 \strokec4  (\cf5 \strokec5 let\cf0 \strokec4  query \cf5 \strokec5 of\cf0 \strokec4  queries)\{\cb1 \
+\cb3         \cf5 \strokec5 if\cf0 \strokec4  (query[\cf8 \strokec8 0\cf0 \strokec4 ] === \cf7 \strokec7 'employee_name'\cf0 \strokec4 )\cb1 \
+\cb3           \cf5 \strokec5 this\cf0 \strokec4 .employee_name = query[\cf8 \strokec8 1\cf0 \strokec4 ]\cb1 \
+\cb3         \cf5 \strokec5 if\cf0 \strokec4  (query[\cf8 \strokec8 0\cf0 \strokec4 ] === \cf7 \strokec7 "work_email"\cf0 \strokec4 )\cb1 \
+\cb3           \cf5 \strokec5 this\cf0 \strokec4 .work_email = query[\cf8 \strokec8 1\cf0 \strokec4 ]\cb1 \
+\cb3         \cf5 \strokec5 if\cf0 \strokec4  (query[\cf8 \strokec8 0\cf0 \strokec4 ] === \cf7 \strokec7 "date_of_birth"\cf0 \strokec4 )\cb1 \
+\cb3           \cf5 \strokec5 this\cf0 \strokec4 .date_of_birth = query[\cf8 \strokec8 1\cf0 \strokec4 ]\cb1 \
+\cb3       \}\cb1 \
+\cb3     \} \cf5 \strokec5 else\cf0 \strokec4  \cf5 \strokec5 if\cf0 \strokec4  (role === \cf7 \strokec7 'organization'\cf0 \strokec4 ) \{\cb1 \
+\cb3         \cf5 \strokec5 if\cf0 \strokec4  (query[\cf8 \strokec8 0\cf0 \strokec4 ] === \cf7 \strokec7 "work_email"\cf0 \strokec4 )\cb1 \
+\cb3           \cf5 \strokec5 this\cf0 \strokec4 .work_email = query[\cf8 \strokec8 1\cf0 \strokec4 ]\cb1 \
+\cb3         \cf5 \strokec5 if\cf0 \strokec4  (query[\cf8 \strokec8 0\cf0 \strokec4 ] === \cf7 \strokec7 "is_exempt"\cf0 \strokec4 )\cb1 \
+\cb3           \cf5 \strokec5 this\cf0 \strokec4 .is_exempt = query[\cf8 \strokec8 1\cf0 \strokec4 ]\cb1 \
+\cb3     \} \cf5 \strokec5 else\cf0 \strokec4  \cf5 \strokec5 if\cf0 \strokec4  (role === \cf7 \strokec7 'product_specialist'\cf0 \strokec4 )\{\cb1 \
+\cb3         \cf5 \strokec5 if\cf0 \strokec4  (query[\cf8 \strokec8 0\cf0 \strokec4 ] === \cf7 \strokec7 "work_email"\cf0 \strokec4 )\cb1 \
+\cb3           \cf5 \strokec5 this\cf0 \strokec4 .work_email = query[\cf8 \strokec8 1\cf0 \strokec4 ]\cb1 \
+\cb3         \cf5 \strokec5 if\cf0 \strokec4  (query[\cf8 \strokec8 0\cf0 \strokec4 ] === \cf7 \strokec7 "is_exempt"\cf0 \strokec4 )\cb1 \
+\cb3           \cf5 \strokec5 this\cf0 \strokec4 .is_exempt = query[\cf8 \strokec8 1\cf0 \strokec4 ]\cb1 \
+\cb3         \cf5 \strokec5 if\cf0 \strokec4  (query[\cf8 \strokec8 0\cf0 \strokec4 ] === \cf7 \strokec7 'employee_name'\cf0 \strokec4 )\cb1 \
+\cb3           \cf5 \strokec5 this\cf0 \strokec4 .employee_name = query[\cf8 \strokec8 1\cf0 \strokec4 ]\cb1 \
+\cb3         \cf5 \strokec5 if\cf0 \strokec4  (query[\cf8 \strokec8 0\cf0 \strokec4 ] === \cf7 \strokec7 "date_of_birth"\cf0 \strokec4 )\cb1 \
+\cb3           \cf5 \strokec5 this\cf0 \strokec4 .date_of_birth = query[\cf8 \strokec8 1\cf0 \strokec4 ]\cb1 \
+\cb3         \cf5 \strokec5 if\cf0 \strokec4  (query[\cf8 \strokec8 0\cf0 \strokec4 ] === \cf7 \strokec7 "specialist_notes"\cf0 \strokec4 )\cb1 \
+\cb3           \cf5 \strokec5 this\cf0 \strokec4 .specialist_notes = query[\cf8 \strokec8 1\cf0 \strokec4 ]\cb1 \
+\cb3     \}\cb1 \
+\cb3   \}\cb1 \
+\cb3   \cb1 \
+\cb3   read(role, queries) \{\cb1 \
+\cb3     \cf2 \strokec2 //catch edge cases like empty queries list or role is not provided\cf0 \cb1 \strokec4 \
+\cb3     \cf5 \strokec5 let\cf0 \strokec4  result = []\cb1 \
+\cb3     \cb1 \
+\cb3     \cf5 \strokec5 if\cf0 \strokec4  (role === \cf7 \strokec7 'employee'\cf0 \strokec4 ) \{\cb1 \
+\cb3       \cf5 \strokec5 for\cf0 \strokec4  (\cf5 \strokec5 let\cf0 \strokec4  query \cf5 \strokec5 of\cf0 \strokec4  queries)\{\cb1 \
+\cb3         \cf5 \strokec5 if\cf0 \strokec4  (query === \cf7 \strokec7 'employee_name'\cf0 \strokec4 )\cb1 \
+\cb3           result.push(\cf5 \strokec5 this\cf0 \strokec4 .employee_name)\cb1 \
+\cb3         \cf5 \strokec5 if\cf0 \strokec4  (query === \cf7 \strokec7 "work_email"\cf0 \strokec4 )\cb1 \
+\cb3           result.push(\cf5 \strokec5 this\cf0 \strokec4 .work_email)\cb1 \
+\cb3         \cf5 \strokec5 if\cf0 \strokec4  (query === \cf7 \strokec7 "date_of_birth"\cf0 \strokec4 )\cb1 \
+\cb3           result.push(\cf5 \strokec5 this\cf0 \strokec4 .date_of_birth)\cb1 \
+\cb3       \}\cb1 \
+\cb3     \} \cf5 \strokec5 else\cf0 \strokec4  \cf5 \strokec5 if\cf0 \strokec4  (role === \cf7 \strokec7 'organization'\cf0 \strokec4 ) \{\cb1 \
+\cb3         \cf5 \strokec5 if\cf0 \strokec4  (query === \cf7 \strokec7 "work_email"\cf0 \strokec4 )\cb1 \
+\cb3           result.push(\cf5 \strokec5 this\cf0 \strokec4 .work_email)\cb1 \
+\cb3         \cf5 \strokec5 if\cf0 \strokec4  (query === \cf7 \strokec7 "is_exempt"\cf0 \strokec4 )\cb1 \
+\cb3           result.push(\cf5 \strokec5 this\cf0 \strokec4 .is_exempt)\cb1 \
+\cb3     \} \cf5 \strokec5 else\cf0 \strokec4  \cf5 \strokec5 if\cf0 \strokec4  (role === \cf7 \strokec7 'product_specialist'\cf0 \strokec4 )\{\cb1 \
+\cb3         \cf5 \strokec5 if\cf0 \strokec4  (query === \cf7 \strokec7 "work_email"\cf0 \strokec4 )\cb1 \
+\cb3           result.push(\cf5 \strokec5 this\cf0 \strokec4 .work_email)\cb1 \
+\cb3         \cf5 \strokec5 if\cf0 \strokec4  (query === \cf7 \strokec7 "is_exempt"\cf0 \strokec4 )\cb1 \
+\cb3           result.push(\cf5 \strokec5 this\cf0 \strokec4 .is_exempt)\cb1 \
+\cb3         \cf5 \strokec5 if\cf0 \strokec4  (query === \cf7 \strokec7 'employee_name'\cf0 \strokec4 )\cb1 \
+\cb3           result.push(\cf5 \strokec5 this\cf0 \strokec4 .employee_name)\cb1 \
+\cb3         \cf5 \strokec5 if\cf0 \strokec4  (query === \cf7 \strokec7 "date_of_birth"\cf0 \strokec4 )\cb1 \
+\cb3           result.push(\cf5 \strokec5 this\cf0 \strokec4 .date_of_birth)\cb1 \
+\cb3         \cf5 \strokec5 if\cf0 \strokec4  (query === \cf7 \strokec7 "specialist_notes"\cf0 \strokec4 )\cb1 \
+\cb3           result.push(\cf5 \strokec5 this\cf0 \strokec4 .specialist_notes)\cb1 \
+\cb3     \}\cb1 \
+\cb3     \cb1 \
+\cb3     \cf5 \strokec5 return\cf0 \strokec4  result\cb1 \
+\cb3   \}\cb1 \
+\cb3 \}\cb1 \
+\
+\cf5 \cb3 \strokec5 const\cf0 \strokec4  new_employee = \cf5 \strokec5 new\cf0 \strokec4  \cf6 \strokec6 Employee\cf0 \strokec4 (\cf7 \strokec7 'John Doe'\cf0 \strokec4 , \cf7 \strokec7 '05211995'\cf0 \strokec4 , \cf7 \strokec7 'work@work.com'\cf0 \strokec4 , \cf5 \strokec5 true\cf0 \strokec4 , \cf7 \strokec7 'remote worker'\cf0 \strokec4 )\cb1 \
+\
+\cb3 console.log(new_employee.read(\cf7 \strokec7 'employee'\cf0 \strokec4 , [\cf7 \strokec7 'employee_name'\cf0 \strokec4 , \cf7 \strokec7 'date_of_birth'\cf0 \strokec4 , \cf7 \strokec7 'is_exempt'\cf0 \strokec4 ]))\cb1 \
+\
+\cb3 console.log(new_employee.write(\cf7 \strokec7 'employee'\cf0 \strokec4 , [[\cf7 \strokec7 'employee_name'\cf0 \strokec4 , \cf7 \strokec7 "Jane Doe"\cf0 \strokec4 ], [\cf7 \strokec7 'work_email'\cf0 \strokec4 , \cf7 \strokec7 'work2@workday.com'\cf0 \strokec4 ]]))\cb1 \
+\
+\cb3 console.log(new_employee)\cb1 \
+\
+\cf2 \cb3 \strokec2 //lots of repeated code breaks DRY principles\cf0 \cb1 \strokec4 \
+\cf2 \cb3 \strokec2 //\cf0 \cb1 \strokec4 \
+}
